@@ -10,5 +10,22 @@
   <button onclick="calculate()">Calculate</button>
   <p id="result"></p>
 
-  <script src="script.js"></script> </body>
+  <script>
+    function calculateMaintenanceFluid(weight) {
+      if (weight <= 10) {
+        return 100 * weight;
+      } else if (weight <= 20) {
+        return 1000 + 50 * (weight - 10);
+      } else {
+        return 1500 + 20 * (weight - 20);
+      }
+    }
+
+    function calculate() {
+      const weight = parseFloat(document.getElementById("weight").value);
+      const maintenanceFluid = calculateMaintenanceFluid(weight);
+      document.getElementById("result").textContent = "Maintenance Fluid: " + maintenanceFluid + " mL/day";
+    }
+  </script>
+</body>
 </html>
