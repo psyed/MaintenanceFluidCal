@@ -2,13 +2,38 @@
 <html>
 <head>
   <title>Maintenance Fluid Calculator</title>
+  <style>
+    body {
+      background-color: #222;
+      color: #fff;
+      font-family: sans-serif;
+    }
+    h1 {
+      color: #ccc;
+    }
+    input[type="number"] {
+      background-color: #333;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
   <h1>Maintenance Fluid Calculator</h1>
   <label for="weight">Enter weight (kg):</label>
   <input type="number" id="weight" min="0" step="0.1">
   <button onclick="calculate()">Calculate</button>
-  <p id="result"></p>
+  <p id="result">Maintenance Fluid: N/A mL/day</p> 
 
   <script>
     function calculateMaintenanceFluid(weight) {
@@ -23,8 +48,10 @@
 
     function calculate() {
       const weight = parseFloat(document.getElementById("weight").value);
-      const maintenanceFluid = calculateMaintenanceFluid(weight);
-      document.getElementById("result").textContent = "Maintenance Fluid: " + maintenanceFluid + " mL/day";
+      if (weight > 0) { // Only update result if weight is entered
+        const maintenanceFluid = calculateMaintenanceFluid(weight);
+        document.getElementById("result").textContent = "Maintenance Fluid: " + maintenanceFluid + " mL/day";
+      } 
     }
   </script>
 </body>
